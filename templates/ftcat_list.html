@@ -1,0 +1,40 @@
+<!--ftcat_list.html-->
+<html>
+    <head>
+        <title>Fagottini and Tenoroons Catalogue</title>
+    </head>
+    <body>
+        <div>
+            <h1><a href="/">Fagottini and Tenoroons Catalogue</a></h1>
+        </div>
+
+        <div>
+            <p>Listing of instruments</p>
+            <h2><a href="">Catalogue Master List</a></h2>
+            <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+        </div>
+
+        <div>
+            <p>published: 14.06.2014, 12:14</p>
+            <h2><a href="">My second post</a></h2>
+            <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut f.</p>
+        </div>
+        <div>
+            {% block content %}
+                {% for ft_catalogue in object_list %}
+                            
+                    <ul>
+                        <li>ID Nr.: {{ft_catalogue.id_nr}} </li>
+                        <li>Maker: {{ft_catalogue.maker}} </li>
+                        <li>Instrument: {{ft_catalogue.instrument}} </li>
+                        <li>Provenance: {{ft_catalogue.provenance}} </li>
+                        <li>Date: {{ft_catalogue.date}} </li>
+                        <li>Current Location: {{ft_catalogue.current_location}} </li>
+                        <li>Statue: {{ft_catalogue.status}} </li>
+                    </ul>
+                {% endfor %}
+            {% endblock %}
+        </div>
+
+    </body>
+</html>
