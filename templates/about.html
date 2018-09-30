@@ -101,6 +101,7 @@
                   <li><a href="{% url 'misccat_list' %}">Miscellaneous Instrument Catalogue</a>
                   </li>
 				  <li><a href="{% url 'search' %}">Search Instrument Details</a></li>
+				  <li><a href="{% url 'measurements' %}">Search Instrument Measurements</a></li>
 				  <li><a href="{% url 'photos' %}">Instrument Photos</a></li>
 
                   <!--<li><a href="faq.html">FAQ</a></li>
@@ -176,8 +177,8 @@
                   <li><a href="{% url 'acknowledgements' %}">Acknowledgements</a></li>
 				  <li><a href="{% url 'collectionlinks' %}">Links to Collections</a>
                   </li>
-				  <li><a href="{% url 'librarylinks' %}">Links to Libraries</a>
-                  </li> 
+				  <!--<li><a href="{% url 'librarylinks' %}">Links to Libraries</a>
+                  </li> -->
                   <!--<li><a href="documentation.html#mailchimp">Mailchimp</a></li>
                   <li><a href="documentation.html#gmap">Google Map</a></li>-->
                 </ul>
@@ -225,7 +226,7 @@
 							<ul class="list-unstyled vertspace">
 							  <li class="media">
 								<img class="img-thumbnail" src="{% static 'assets/images/team/ThomasD_4x4.jpg' %}" alt="ThomasD" style="width:12%;height:20%">
-								<p>[Photo by ]</p></img>
+								<p>[Photo by Judith Schlosser]</p></img>
 								<div class="media-body">
 								  <h5 class="mt-0 mb-1">Prof. Dr. Thomas Drescher, Head of the Schola Cantorum Basiliensis (FHNW):</h5>
 								  <p>Musicologist and specialist in organology.  Author of numerous scholarly articles on organological topics, music-iconographic studies, social-historical 
@@ -365,27 +366,28 @@
 										<li>Theodore Albrecht<li>
 										<li>Hugo Rodriguez Arteaga</li>
 										<li>Juan Pablo Barreno</li>
-										<li>Walter Bassetto<li>
-										<li>Alfredo Bernardini<li>
-										<li>Cristina Bordas<li>
-										<li>Josep Borràs<li>
-										<li>Martin Chiang<li>
-										<li>Daniel Deitch<li>
-										<li>Alison Gangler<li>
-										<li>Lucas van helsdingen<li>
-										<li>Klaus Hubmann<li>
-										<li>Bruno Kampman<li>
-										<li>James Kopp<li>
-										<li>Daniel Leinhard<li>
-										<li>Kathrin Menze<li>
-										<li>Martina Paprio<li>
-										<li>Christoph Peter<li>
-										<li>David Rachor<li>
-										<li>Marianne van Rijn<li>
-										<li>Ernst Schlader<li>
-										<li>Wouter Verschuren<li>
-										<li>Elisabeth Waterhouse<li>
-										<li>Claudia and Peter Wolf<li>
+										<li>Walter Bassetto</li>
+										<li>Alfredo Bernardini</li>
+										<li>Cristina Bordas</li>
+										<li>Josep Borràs</li>
+										<li>Colby Chenard</li>
+										<li>Martin Chiang</li>
+										<li>Daniel Deitch</li>
+										<li>Alison Gangler</li>
+										<li>Lucas van helsdingen</li>
+										<li>Klaus Hubmann</li>
+										<li>Bruno Kampman</li>
+										<li>James Kopp</li>
+										<li>Daniel Leinhard</li>
+										<li>Kathrin Menze</li>
+										<li>Martina Paprio</li>
+										<li>Christoph Peter</li>
+										<li>David Rachor</li>
+										<li>Marianne van Rijn</li>
+										<li>Ernst Schlader</li>
+										<li>Wouter Verschuren</li>
+										<li>Elisabeth Waterhouse</li>
+										<li>Claudia and Peter Wolf</li>
 									</ul>
 								<h5>Institutions</h5>
 								    <ul style="list-style: none;">
@@ -474,11 +476,9 @@
           <div class="container">
             <div class="row">
               <div class="col-sm-6">
-                <p class="copyright font-alt">Copyright&copy; 2018&nbsp;<a href="index.html"></a></p>
+                <!--<p class="copyright font-alt">Copyright&copy; 2018&nbsp;<a href="index.html"></a></p>-->
               </div>
-              <div class="col-sm-6">
-                <div class="footer-social-links"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-dribbble"></i></a><a href="#"><i class="fa fa-skype"></i></a>
-                </div>
+
               </div>
             </div>
           </div>
