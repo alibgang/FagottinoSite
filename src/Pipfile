@@ -4,7 +4,12 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-django-filter = "*"
+django = "*"
+pymysql = "*"
+gunicorn = "*"
+mysqlclient = "*"
+djangorestframework-filters = "*"
+uwsgi = "*"
 
 [dev-packages]
 

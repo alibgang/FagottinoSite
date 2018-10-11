@@ -1,5 +1,5 @@
 -i https://pypi.org/simple
-django-filter==2.0.0
+django-filter==1.0
 django==2.1.2
 pytz==2018.5
 gunicorn==19.9.0

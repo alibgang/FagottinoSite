@@ -13,14 +13,13 @@ services:
   web:
     build: .
     container_name: dg01
-    command: bash -c "pipenv run python manage.py makemigrations && python manage.py runserver migrate && gunicorn fagottino.wsgi -b 0.0.0.0:8000"
+    entrypoint: /src/prep-env.sh
     depends_on:
       - db
     volumes:
       - ./src:/src
     expose:
       - "8000"
-    
   db:
     image: mysql:latest
     container_name: msq01
