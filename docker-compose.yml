@@ -31,5 +31,5 @@ services:
       MYSQL_USER: admin
       MYSQL_PASSWORD: admin
       MYSQL_DATABASE: fagottino
-    volumes:
-    - .msqldata:/var/lib/mysql
+    # volumes:
+    # - .msqldata:/var/lib/mysql  #had this working initially but seems to get corrupt need to look into more
