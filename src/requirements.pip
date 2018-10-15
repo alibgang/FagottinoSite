@@ -1,0 +1,11 @@
+-i https://pypi.org/simple
+django==2.1.1
+django-filter==2.0
+pytz==2018.5
+gunicorn==19.9.0
+pipenv
+mysqlclient
+django-mysql
+djangorestframework-filters
+pymysql
+uwsgi
