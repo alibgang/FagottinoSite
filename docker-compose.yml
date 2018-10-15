@@ -2,7 +2,7 @@ version: '2'
 services:
   nginx:
     image: nginx:latest
-    container_name: ng01
+    container_name: NGINXDOCKERNAME
     ports:
       - "8000:8000"
     volumes:
@@ -12,17 +12,18 @@ services:
       - web
   web:
     build: .
-    container_name: dg01
+    container_name: DJANGOXDOCKERNAME
     entrypoint: /src/prep-env.sh
     depends_on:
       - db
     volumes:
       - ./src:/src
+      - ./static:/static
     expose:
       - "8000"
   db:
     image: mysql:latest
-    container_name: msq01
+    container_name: MSQLDOCKERNAME
     ports:
       - "3306:3306"
     environment:
@@ -30,3 +31,5 @@ services:
       MYSQL_USER: admin
       MYSQL_PASSWORD: admin
       MYSQL_DATABASE: fagottino
+    volumes:
+    - .msqldata:/var/lib/mysql
