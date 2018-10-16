@@ -4,6 +4,7 @@ ENV PYTHONUNBUFFERED 1
 COPY ./src /src
 RUN mkdir -p /config
 RUN mkdir /static
+
 COPY ./requirements.pip /config/requirements.pip
 RUN pip install -r /config/requirements.pip
 
