@@ -3,25 +3,29 @@ services:
   nginx:
     image: nginx:latest
     container_name: NGINXDOCKERNAME
+    restart: always 
     ports:
       - "8000:8000"
     volumes:
       - ./src:/src
       - ./config/nginx:/etc/nginx/conf.d
+      - ./static:/src/static
     depends_on:
       - web
   web:
     build: .
+    restart: always 
     container_name: DJANGOXDOCKERNAME
-    entrypoint: /src/prep-env.sh
     depends_on:
       - db
     volumes:
+      - ./static:/src/static
       - ./src:/src
     expose:
       - "8000"
   db:
     image: mysql:latest
+    restart: always 
     container_name: MSQLDOCKERNAME
     ports:
       - "3306:3306"
@@ -30,5 +34,5 @@ services:
       MYSQL_USER: admin
       MYSQL_PASSWORD: admin
       MYSQL_DATABASE: fagottino
-    # volumes:
-    # - .msqldata:/var/lib/mysql  #had this working initially but seems to get corrupt need to look into more
+    volumes:
+    - /sql/datadir:/var/lib/mysql 

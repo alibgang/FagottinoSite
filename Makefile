@@ -4,11 +4,14 @@ build:
 up:
 	docker-compose up -d
 
-up-init:
+up-tail:
 	docker-compose up
 
 start:
 	docker-compose start
+
+down:
+	docker-compose down
 
 stop:
 	docker-compose stop
@@ -33,3 +36,6 @@ log-web:
 
 log-db:
 	docker-compose logs db
+
+collectstatic:
+	docker exec DJANGOXDOCKERNAME /bin/sh -c "python manage.py collectstatic --noinput"  

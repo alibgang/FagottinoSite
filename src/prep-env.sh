@@ -1,3 +1,9 @@
 #!/bin/bash
+set -e
+sleep 5
 
-python manage.py migrate; gunicorn fagottino.wsgi -b 0.0.0.0:8000
+# dblogs=$(docker-compose logs) | grep "/usr/sbin/mysqld: ready for connections."
+
+# python manage.py collectstatic --noinput
+# pipenv run python3 manage.py migrate && p
+# python3 manage.py makemigrations 
