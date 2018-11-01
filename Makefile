@@ -4,6 +4,9 @@ build:
 up:
 	docker-compose up -d
 
+publish:
+	docker-compose up -p
+
 up-tail:
 	docker-compose up
 
