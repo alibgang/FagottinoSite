@@ -12,3 +12,4 @@ static
 ft.code-workspace
 .data
 .env
+django.env
