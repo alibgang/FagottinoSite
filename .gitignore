@@ -6,3 +6,9 @@ db.sqlite3
 /static
 .DS_Store
 .vscode
+static
+.msqldata
+.backup
+ft.code-workspace
+.data
+.env

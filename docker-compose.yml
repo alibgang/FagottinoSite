@@ -1,0 +1,40 @@
+version: '2'
+services:
+  nginx:
+    image: nginx:latest
+    container_name: NGINXDOCKERNAME
+    # restart: always 
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./src:/src
+      - ./config/nginx:/etc/nginx/conf.d
+      - ./static:/src/static
+    depends_on:
+      - web
+  web:
+    build: .
+    # restart: always 
+    container_name: DJANGOXDOCKERNAME
+    env_file:
+      - django.env
+    depends_on:
+      - db
+    volumes:
+      - ./static:/src/static
+      - ./src:/src
+    expose:
+      - "8000"
+  db:
+    image: mysql:latest
+    # restart: always 
+    container_name: MSQLDOCKERNAME
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin
+      MYSQL_DATABASE: fagottino
+    volumes:
+    - /sql/datadir:/var/lib/mysql 
