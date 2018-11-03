@@ -37,7 +37,6 @@ setupEnvFile() {
 }
 
 zipup() {
-
     read -p "Enter full path to directory or file to upload " -r FILE_PATH
     
     TARNAME=$(basename "$FILE_PATH")
@@ -50,8 +49,6 @@ zipup() {
     sleep 2
 
     printf "Uploading ${TARNAME} to VPS@ ${FTPIP} /data/${TARNAME}\n\n\n"
-    
-
     res=$(lftp sftp://$USER:$PASS@$FTPIP -e "put ${TARNAME}; bye")
 
     checkFTPTransfer $res
@@ -61,7 +58,6 @@ zipup() {
 
 checkFTPTransfer() {
     ftpRes=$(echo "$@")
-    # echo $ftpRes
     transferred=$(echo $ftpRes | grep "[1-9]* bytes transferred")
     echo $transferred
     if [[ -n $transferred ]];
