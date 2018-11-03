@@ -3,7 +3,7 @@ services:
   nginx:
     image: nginx:latest
     container_name: NGINXDOCKERNAME
-    restart: always 
+    # restart: always 
     ports:
       - "8000:8000"
     volumes:
@@ -14,7 +14,7 @@ services:
       - web
   web:
     build: .
-    restart: always 
+    # restart: always 
     container_name: DJANGOXDOCKERNAME
     env_file:
       - django.env
@@ -27,7 +27,7 @@ services:
       - "8000"
   db:
     image: mysql:latest
-    restart: always 
+    # restart: always 
     container_name: MSQLDOCKERNAME
     ports:
       - "3306:3306"
