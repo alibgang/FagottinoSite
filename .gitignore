@@ -11,3 +11,4 @@ static
 .backup
 ft.code-workspace
 .data
+.env
