@@ -1,26 +1,35 @@
 version: '2'
 services:
   nginx:
+    build: ./config
     image: nginx:latest
-    container_name: NGINXDOCKERNAME
+    container_name: NGINX
     # restart: always 
     ports:
       - "8000:8000"
     volumes:
       - ./src:/src
       - ./config/nginx:/etc/nginx/conf.d
+      - ./config/nginx/sites-available:/etc/nginx/sites-available
       - ./static:/src/static
+    entrypoint:
+      - ln 
+      - -s 
+      - /etc/nginx/sites-available/fagottino 
+      - /etc/nginx/sites-available]
     depends_on:
       - web
   web:
     build: .
     # restart: always 
-    container_name: DJANGOXDOCKERNAME
+    container_name: DJANGO
     env_file:
       - django.env
     depends_on:
       - db
     volumes:
+      - ./config/gunicorn:/etc/systemd/system/gunicorn.socket
+      - ./config/gunicorn:/etc/systemd/system/gunicorn.service
       - ./static:/src/static
       - ./src:/src
     expose:
@@ -28,7 +37,7 @@ services:
   db:
     image: mysql:latest
     # restart: always 
-    container_name: MSQLDOCKERNAME
+    container_name: MYSQL
     ports:
       - "3306:3306"
     environment:
