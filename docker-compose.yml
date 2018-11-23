@@ -10,13 +10,13 @@ services:
     volumes:
       - ./src:/src
       - ./config/nginx:/etc/nginx/conf.d
-      - ./config/nginx/sites-available:/etc/nginx/sites-available
+      # - ./config/nginx/sites-available:/etc/nginx/sites-available
       - ./static:/src/static
-    entrypoint:
-      - ln 
-      - -s 
-      - /etc/nginx/sites-available/fagottino 
-      - /etc/nginx/sites-available
+    # entrypoint:
+    #   - ln 
+    #   - -s 
+    #   - /etc/nginx/sites-available/fagottino.conf 
+    #   - /etc/nginx/sites-available
     depends_on:
       - web
   web:
