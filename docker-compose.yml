@@ -16,7 +16,7 @@ services:
       - ln 
       - -s 
       - /etc/nginx/sites-available/fagottino 
-      - /etc/nginx/sites-available]
+      - /etc/nginx/sites-available
     depends_on:
       - web
   web:
