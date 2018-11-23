@@ -10,4 +10,4 @@ RUN pip install -r requirements.pip
 RUN sleep 2
 RUN pipenv lock --pre
 RUN pipenv install
-CMD pipenv run python manage.py migrate && python manage.py makemigrations; gunicorn fagottino.wsgi -b stg-historical-bassoons.com:8000
+CMD pipenv run python manage.py migrate && python manage.py makemigrations; gunicorn fagottino.wsgi -b 0.0.0.0:8000
