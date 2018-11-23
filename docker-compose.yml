@@ -2,7 +2,7 @@ version: '2'
 services:
   nginx:
     build: ./config
-    image: nginx:latest
+    # image: nginx:latest
     container_name: NGINX
     # restart: always 
     ports:
