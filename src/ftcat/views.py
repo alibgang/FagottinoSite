@@ -44,7 +44,8 @@ def search(request):
     #context_object_name = 'instrument_details'
 
 #FT Measurments list
-
+def measurements(request):
+    return render(request, 'measurements.html')
 
 #Misc Catalogue list
 def misccat_list(request):

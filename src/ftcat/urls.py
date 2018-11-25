@@ -44,6 +44,7 @@ urlpatterns = [
     path('endoscopicvideos/', views.endoscopicvideos, name='endoscopicvideos'),
     path('reflections/', views.reflections, name='reflections'),
     path('publications/', views.publications, name='publications'),
+    path('measurements/',views.measurements,name='measurements')
     path('makers/', views.makers, name='makers'),
     path('iconography/', views.iconography, name='iconography'),
     path('team/', views.team, name='team'),
