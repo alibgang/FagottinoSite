@@ -44,7 +44,15 @@ def search(request):
     #context_object_name = 'instrument_details'
 
 #FT Measurments list
+def measurements(request):
+    return render(request, 'measurements.html')
 
+# Initial instrument info for measurements
+#this is the actual def for measurements from views.py
+#def measurements(request):
+    #inst_list = FT_Catalogue.objects.all()
+    #inst_list_filter = FtcatFilter(request.GET, queryset=inst_list) 
+    #return render(request, 'measurements.html', {'filter': inst_list_filter})
 
 #Misc Catalogue list
 def misccat_list(request):
