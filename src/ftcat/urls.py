@@ -3,7 +3,16 @@ from django.urls import path
 from .import views
 from ftcat import views
 from ftcat.views import ftcat_list
-#from ftcat.search import views
+from ftcat.views import measurements
+# from ftcat.views import jointlen
+# from ftcat.views import toneholedistanceaxis
+# from ftcat.views import toneholeanglediamlengthout
+# from ftcat.views import innerborelength
+# from ftcat.views import innerborebeginningdiamnotsocket
+# from ftcat.views import completeoutside
+# from ftcat.views import toneholeanglediamlengthin
+# from ftcat.views import completeinside
+
 
 urlpatterns = [
     path('', views.index, name='index'),
@@ -14,6 +23,11 @@ urlpatterns = [
 
     # instrument details URL
     path('search/', views.search, name='search'),
+
+    # search instrument measurements
+    
+    #path('measurements/', views.Measurements.as_view(), name='measurements'),
+    path('measurements/', views.measurements, name='measurements'),
 
 #next try:
     #path(r'^searchdetails/', FilterView.as_view(filterset_class=InstrDetailFilter,
@@ -44,7 +58,6 @@ urlpatterns = [
     path('endoscopicvideos/', views.endoscopicvideos, name='endoscopicvideos'),
     path('reflections/', views.reflections, name='reflections'),
     path('publications/', views.publications, name='publications'),
-    path('measurements/',views.measurements,name='measurements'),
     path('makers/', views.makers, name='makers'),
     path('iconography/', views.iconography, name='iconography'),
     path('team/', views.team, name='team'),

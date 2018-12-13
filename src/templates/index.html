@@ -119,6 +119,7 @@
                   <li><a href="{% url 'misccat_list' %}">Miscellaneous Instrument Catalogue</a>
                   </li>
 				  <li><a href="{% url 'search' %}">Search Instrument Details</a></li>
+				  <li><a href="{% url 'measurements' %}">Search Instrument Measurements</a></li>
 				  <li><a href="{% url 'photos' %}">Instrument Photos</a></li>
 
                   <!--<li><a href="faq.html">FAQ</a></li>
@@ -202,8 +203,18 @@
       </section>
       <div class="main">
 	  {% block content %}
-       <section class="module">
+		<section class="module">
           <div class="container">
+			<div class="row multi-columns-row">
+		  		<div class="col-sm-6 col-sm-6 ">
+					<!--<img src="assets/images/logos/FHNW/FHNW_SCB_HSM_E_10mm.jpg" class="img-fluid" alt="Responsive image" style="padding-top:20px;padding-right:15px">-->
+					<img src="{% static 'assets/images/logos/FHNW/NWU.jpg' %}" class="img-fluid" alt="Responsive image" style="padding-top:20px;padding-right:5px">
+				</div>
+			
+				<div>
+					<img src="{% static 'assets/images/logos/SNF_web.presentations/SNF_RGB_E_POS.png' %}" class="img-fluid" alt="Responsive image" style="width:40%;height:15%;padding-top:15px;padding-top:15">
+				</div>
+			</div>
 
 			<div class="row multi-columns-row">
 			<div class="col-md-12 col-sm-6 col-xs-12">
@@ -215,13 +226,7 @@
 				<div class="col-md-6 col-sm-6 col-xs-12">
 					<h2>A two-year research project funded by the Swiss National Science Foundation </h2>
 				</div>
-				<div class="col-md-3 col-sm-6 col-xs-12">
-					<!--<img src="assets/images/logos/FHNW/FHNW_SCB_HSM_E_10mm.jpg" class="img-fluid" alt="Responsive image" style="padding-top:20px;padding-right:15px">-->
-					<img src="{% static 'assets/images/logos/FHNW/NWU.jpg' %}" class="img-fluid" alt="Responsive image" style="padding-top:20px;padding-right:5px">
-				</div>
-				<div>
-					<img src="{% static 'assets/images/logos/SNF_web.presentations/SNF_RGB_E_POS.png' %}" class="img-fluid" alt="Responsive image" style="width:25%;height:15%;padding-top:15px;padding-top:15">
-				</div>
+
 			</div>
           </div>
         </section>
