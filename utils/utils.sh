@@ -24,3 +24,8 @@ deleteItems() {
     done
     printf "\nFinished cleanup!"
 }
+
+strToLower() {
+    str=$1
+    echo "$str" | tr '[:upper:]' '[:lower:]'
+}
