@@ -12,28 +12,6 @@ FTP_CONFIG_FILE="../../config/ftp/$ENV"
 
 
 
-main() {
-    #format var
-    ENV=$(strToLower $ENV)
-    # init
-}
-
-main
-
-######## GET ENVARS ########
-if [[ "$ENV" == "prod" ]]; 
-then
-    #prod(VPS)variabls
-    FTP_CONFIG_FILE=../../config/ftp/.prod_env
-else
-    #Staging(VPS)variabls
-    FTP_CONFIG_FILE=../../config/ftp.vps_env
-fi
-
-echo $FTP_CONFIG_DIR
-echo $FTP_CONFIG_FILE
-
-
 setupEnvFile() {
     # Check if an .env file exist if not lets create it
     if [ ! -f "${FTP_CONFIG_FILE}" ]; then
@@ -94,8 +72,26 @@ checkFTPTransfer() {
 }
 
 init() {
+        ######## GET ENVARS ########
+    if [[ "$ENV" == "prod" ]]; 
+    then
+        #prod(VPS)variabls
+        FTP_CONFIG_FILE=../../config/ftp/.prod_env
+        ENV_MESSAGE="Currently running with Production server environment"
+        # printf "Config details \n"
+        # cat $FTP_CONFIG_FILE
+
+    else
+        #Staging(VPS)variabls
+        FTP_CONFIG_FILE=../../config/ftp.vps_env
+        ENV_MESSAGE="Staging Currently running with Server Environment"
+    fi
+
     printf "\n************ WELCOME TO FTP MANAGER ************\n\n"
-    printf  "Currently running in a $ENV_MESSAGE"
+    printf  "$ENV_MESSAGE\n\n"
+    printf "Configuration file details: \n"
+    cat $FTP_CONFIG_FILE
+    printf "\n\n"
     printf  "The purpose of this script is to compress and upload files the to a specified server.\n"
     printf  "This will compress the file or directory and sftp it the the server.\n"
     printf  "The script requires a .env file to run.  \nIf it does not exist it will be created for you.\nJust follow the on screen prompts.\n\n"
@@ -111,3 +107,10 @@ init() {
 }
 
 
+main() {
+    #format var
+    ENV=$(strToLower $ENV)
+    init
+}
+
+main
