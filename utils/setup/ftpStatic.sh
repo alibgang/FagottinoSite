@@ -5,9 +5,34 @@ pushd ../
 source ./utils.sh
 popd
 
-# GET ENVARS
+ENV=$1
+ENV_MESSAGE=""
 FTP_CONFIG_DIR=../../config/ftp
-FTP_CONFIG_FILE=../../config/ftp/.env
+FTP_CONFIG_FILE="../../config/ftp/$ENV"
+
+
+
+main() {
+    #format var
+    ENV=$(strToLower $ENV)
+    # init
+}
+
+main
+
+######## GET ENVARS ########
+if [[ "$ENV" == "prod" ]]; 
+then
+    #prod(VPS)variabls
+    FTP_CONFIG_FILE=../../config/ftp/.prod_env
+else
+    #Staging(VPS)variabls
+    FTP_CONFIG_FILE=../../config/ftp.vps_env
+fi
+
+echo $FTP_CONFIG_DIR
+echo $FTP_CONFIG_FILE
+
 
 setupEnvFile() {
     # Check if an .env file exist if not lets create it
@@ -69,9 +94,10 @@ checkFTPTransfer() {
 }
 
 init() {
-    printf "\n************ WELCOME TO VPS FTP MANAGER ************\n\n"
-    printf  "The purpose of this script is to compress and upload files the vps.\n"
-    printf  "This will compress the file or directory and sftp it the vps.\n"
+    printf "\n************ WELCOME TO FTP MANAGER ************\n\n"
+    printf  "Currently running in a $ENV_MESSAGE"
+    printf  "The purpose of this script is to compress and upload files the to a specified server.\n"
+    printf  "This will compress the file or directory and sftp it the the server.\n"
     printf  "The script requires a .env file to run.  \nIf it does not exist it will be created for you.\nJust follow the on screen prompts.\n\n"
 
     read -p "Do you want to continue choose y/n? " -n 1 -r
@@ -84,8 +110,4 @@ init() {
     zipup
 }
 
-main() {
-    init
-}
 
-main
