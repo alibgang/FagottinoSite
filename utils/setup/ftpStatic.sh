@@ -1,11 +1,12 @@
 #!/bin/bash
 
 # Load Utils
+# LFTP must be installed. 'sudo apt install lftp (ubuntu)'
+
 pushd ../
 source ./utils.sh
 popd
 
-ENV=$1
 ENV_MESSAGE=""
 FTP_CONFIG_DIR=../../config/ftp
 FTP_CONFIG_FILE="../../config/ftp/$ENV"
@@ -51,7 +52,7 @@ zipup() {
     printf "Launch SFTP Session....\n\n"
     sleep 2
 
-    printf "Uploading ${TARNAME} to VPS@ ${FTPIP} /data/${TARNAME}\n\n\n"
+    printf "Uploading ${TARNAME} to $ENVI@ ${FTPIP} /data/${TARNAME}\n\n\n"
     res=$(lftp sftp://$USER:$PASS@$FTPIP -e "put ${TARNAME}; bye")
 
     checkFTPTransfer $res
@@ -73,7 +74,7 @@ checkFTPTransfer() {
 
 init() {
         ######## GET ENVARS ########
-    if [[ "$ENV" == "prod" ]]; 
+    if [[ "$ENVI" == "prod" ]]; 
     then
         #prod(VPS)variabls
         FTP_CONFIG_FILE=../../config/ftp/.prod_env
@@ -108,9 +109,9 @@ init() {
 
 
 main() {
-    #format var
-    ENV=$(strToLower $ENV)
+    ENVI=$1
+    ENVI=$(strToLower $ENVI)
     init
 }
 
-main
+main $1

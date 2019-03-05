@@ -13,3 +13,4 @@ ft.code-workspace
 .data
 .env
 django.env
+.prod_env
