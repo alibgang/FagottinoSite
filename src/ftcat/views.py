@@ -2,20 +2,27 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
 
+from django.views import generic
+
 from django.views.generic import ListView
 from django.shortcuts import render_to_response
 
+from django.views.generic import TemplateView
+
 from .models import FT_Catalogue
+# from ftcat.models import FT_Catalogue, JointLengths, ToneholeDistanceAxis, ToneholeAngleDiamLengthOut, InnerBoreLength, InnerBoreBeginningDiamNotSocket, CompleteOutside, ToneHoleAngleDiamLengthIn, CompleteInside
 from ftcat.models import *
 
 #From Tutorial on filtering:
 #from django.contrib.auth.models import FT_Catalogue
-from .filters import FtcatFilter
+from .filters import FtcatFilter, MeasurementsFilter, JointLenFilter, ToneholeDistanceAxisFilter, ToneholeAngDiamLenOutFilter, InnerBoreLengthFilter, InnerBoreBeginningDiamNotSocketFilter, CompleteOutside ,ToneHoleAngleDiamLengthInFilter, CompleteInsideFilter 
+#from .filters import MeasurementsFilter
+
+from itertools import chain
+
 
 
 # Create your views here.
-#def index(request):
-    #return HttpResponse("Welcome. You're at the Fagottino Site.")
 
 def index(request):
     return render(request, 'index.html', {})
@@ -27,12 +34,6 @@ def ftcat_list(request):
     return render(request, 'ftcat.html', {'ftlist':ftlist})
 
 #FT Cat Details list
-#From Tutorial:
-#def instrdetails(request): #didn't work
-    #instdetail_list = FT_Catalogue.objects.all()
-    #instdetail_filter = InstDetailFilter(request.GET, queryset=instdetail_list)
-    #return render(request, 'ftcat_details.html', {'filter': instdetail_filter})
-
 def search(request):
     ftcat_list = FT_Catalogue.objects.all()
     ftcat_filter = FtcatFilter(request.GET, queryset=ftcat_list)
@@ -43,16 +44,20 @@ def search(request):
     #detaillist = FT_Catalogue.objects.all()
     #context_object_name = 'instrument_details'
 
-#FT Measurments list
-def measurements(request):
-    return render(request, 'measurements.html')
+
+
+    #FT Measurements list
 
 # Initial instrument info for measurements
-#this is the actual def for measurements from views.py
-#def measurements(request):
-    #inst_list = FT_Catalogue.objects.all()
-    #inst_list_filter = FtcatFilter(request.GET, queryset=inst_list) 
-    #return render(request, 'measurements.html', {'filter': inst_list_filter})
+def measurements(request):
+    inst_list = FT_Catalogue.objects.all()
+    inst_list_filter = FtcatFilter(request.GET, queryset=inst_list) 
+    return render(request, 'measurements.html', {'filter': inst_list_filter})
+
+
+
+
+
 
 #Misc Catalogue list
 def misccat_list(request):
@@ -147,4 +152,17 @@ def librarylinks(request):
     #model = FT_Catalogue
     	#added loader.get_template() andn module as listed above:
     #template_name = loader.get_template('ftcat.html')
+
+#FT Measurments list
+#def measurements(request):
+    #jointlen_measurements = JointLengths.objects.all()
+    #jointlengths_filter = JointLenFilter(request.GET, queryset=jointlen_measurements)
+    #return render(request, 'measurements.html', {'filter': jointlengths_filter} )
+
+
+
+#def toneholedistanceaxis(request):
+    #toneholedistaxismeas = ToneholeDistanceAxis.objects.all()
+    #toneholedistaxis_filter = ToneholeDistanceAxisFilter(request.GET, queryset=toneholedistaxismeas)
+    #return render(request, 'measurements.html', {'filter': toneholedistaxis_filter} )
 
