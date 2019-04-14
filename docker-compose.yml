@@ -2,8 +2,8 @@ version: '2'
 services:
   nginx:
     image: nginx:latest
-    container_name: production_nginx
-    # restart: always 
+    container_name: nginx_container
+    restart: always 
     ports:
       - 80:80
       - 443:443
@@ -16,8 +16,9 @@ services:
       - web
   web:
     build: .
-    # restart: always 
-    container_name: DJANGOXDOCKERNAME
+    restart: always 
+    container_name: django_container
+
     env_file:
       - django.env
     depends_on:
@@ -29,8 +30,8 @@ services:
       - "80"
   db:
     image: mysql:latest
-    # restart: always 
-    container_name: MSQLDOCKERNAME
+    restart: always 
+    container_name: MYSQL_container
     ports:
       - "3306:3306"
     environment:
@@ -39,4 +40,4 @@ services:
       MYSQL_PASSWORD: admin
       MYSQL_DATABASE: fagottino
     volumes:
-    - /sql/datadir:/var/lib/mysql 
+    - ~/code/mysql/datadir:/var/lib/mysql 
