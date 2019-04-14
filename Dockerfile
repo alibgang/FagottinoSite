@@ -1,6 +1,7 @@
 FROM python:3
 ENV PYTHONUNBUFFERED 1
 ENV C_FORCE_ROOT true
+ENV django_port=$(env_port)
 RUN mkdir -p /src
 RUN mkdir -p /config
 
@@ -20,4 +21,4 @@ RUN pip3 install --upgrade pip
 RUN pip3 install -r requirements.pip
 
 
-CMD sleep 3 && python manage.py migrate && python manage.py makemigrations && gunicorn fagottino.wsgi -b 0.0.0.0:80
+CMD sleep 3 && python manage.py migrate && python manage.py makemigrations && gunicorn fagottino.wsgi -b 0.0.0.0:$DJANGO_PORT

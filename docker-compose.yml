@@ -1,24 +1,28 @@
 version: '2'
+networks:
+  fagottino_net:
+    driver: bridge
 services:
   nginx:
     image: nginx:latest
     container_name: nginx_container
-    restart: always 
+    restart: always
     ports:
-      - 80:80
-      - 443:443
+      - ${NGINX_HTTP_PORT}:${NGINX_HTTP_PORT}
+      - ${NGINX_HTTPS_PORT}:443
     volumes:
       - ./src:/src
-      - ./config/nginx:/etc/nginx/conf.d
+      - ./config/nginx/nginx.conf:/etc/nginx/conf.d/custom.conf
       - ./static:/src/static
       - ./config/nginx/ssl:/etc/nginx/ssl
     depends_on:
       - web
+    networks:
+      - fagottino_net
   web:
     build: .
     restart: always 
     container_name: django_container
-
     env_file:
       - django.env
     depends_on:
@@ -27,17 +31,20 @@ services:
       - ./static:/src/static
       - ./src:/src
     expose:
-      - "80"
+      - ${DJANGO_PORT}
+    networks:
+      - fagottino_net
   db:
     image: mysql:latest
     restart: always 
     container_name: MYSQL_container
-    ports:
-      - "3306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: admin
       MYSQL_USER: admin
       MYSQL_PASSWORD: admin
       MYSQL_DATABASE: fagottino
     volumes:
-    - ~/code/mysql/datadir:/var/lib/mysql 
+    - ~/code/mysql/datadir:/var/lib/mysql
+    networks:
+      - fagottino_net
+    
