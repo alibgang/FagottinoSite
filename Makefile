@@ -1,3 +1,4 @@
+.PHONY: build
 build:
 	docker-compose build
 
@@ -23,13 +24,13 @@ restart:
 	docker-compose stop && docker-compose start
 
 shell-nginx:
-	docker exec -ti NGINXDOCKERNAME bash
+	sudo docker exec -ti nginx_container bash
 
 shell-web:
-	docker exec -ti DJANGOXDOCKERNAME bash
+	sudo docker exec -ti django_container bash
 
 shell-db:
-	docker exec -ti MSQLDOCKERNAME bash
+	sudo docker exec -ti MYSQL_container bash
 
 log-nginx:
 	docker-compose logs nginx  

@@ -14,3 +14,5 @@ ft.code-workspace
 .env
 django.env
 .prod_env
+*.sql*
+*.tar.gz*
